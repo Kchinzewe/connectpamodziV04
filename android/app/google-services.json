@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "508999367878",
+    "project_id": "connectpamodziv04",
+    "storage_bucket": "connectpamodziv04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508999367878:android:10cd0ded663d2435ce2bc7",
+        "android_client_info": {
+          "package_name": "com.example.connectpamodziv04"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1hjtXU3HdXthsb8tQ7n7cbf5_LglrpOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
