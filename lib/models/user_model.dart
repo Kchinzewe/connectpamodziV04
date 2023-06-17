@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   final String name;
   final String desc;
   final String profileurl;
@@ -6,7 +6,7 @@ class User {
   final int following;
   final int posts;
 
-  User({
+  UserModel({
     this.desc,
     this.profileurl,
     this.followers,

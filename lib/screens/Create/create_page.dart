@@ -1,3 +1,4 @@
+import 'package:connectpamodziv04/screens/Create/add.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,6 +14,17 @@ final store = FirebaseFirestore.instance;
 final auth = FirebaseAuth.instance;
 
 User user;
+
+void savePost(String text) async {
+  await FirebaseFirestore.instance.collection("userpost").add(
+    {
+      'text': text,
+      'creator': FirebaseAuth.instance.currentUser.uid,
+      'name': user.displayName,
+      'timestamp': FieldValue.serverTimestamp(),
+    },
+  );
+}
 
 void publishPosts(String place, String posturl) async {
   user = auth.currentUser;
@@ -72,7 +84,7 @@ class Create extends StatelessWidget {
             // padding: EdgeInsets.fromLTRB(20.0, 20.0, 50.0, 10.0),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.pink, Colors.redAccent, Colors.orange],
+                  colors: [Colors.tealAccent, Colors.purple, Colors.purpleAccent],
                   begin: Alignment.bottomRight,
                   end: Alignment.topLeft,
                 ),
@@ -97,7 +109,7 @@ class Create extends StatelessWidget {
             // padding: EdgeInsets.fromLTRB(20.0, 20.0, 50.0, 10.0),
             decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.purple, Colors.deepPurple, Colors.blueAccent],
+                  colors: [Colors.purple, Colors.deepPurple, Colors.tealAccent],
                   begin: Alignment.bottomRight,
                   end: Alignment.topLeft,
                 ),
@@ -116,6 +128,31 @@ class Create extends StatelessWidget {
                 )),
           ),
         ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20.0),
+          child: Container(
+            // padding: EdgeInsets.fromLTRB(20.0, 20.0, 50.0, 10.0),
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.tealAccent, Colors.purple, Colors.purpleAccent],
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
+                ),
+                borderRadius: BorderRadius.circular(20.0)),
+            // padding: EdgeInsets.fromLTRB(20.0, 20.0, 50.0, 10.0),
+            child: TextButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  Add(),) );
+                },
+                child: const Text(
+                  'Add a New Post',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Metropolis',
+                      fontWeight: FontWeight.bold),
+                )),
+          ),
+        )
       ],
     );
   }
@@ -177,7 +214,7 @@ class ImageFromGalleryExState extends State<ImageFromGalleryEx> {
                 width: 200,
                 height: 200,
                 decoration: BoxDecoration(
-                    color: Colors.red[200],
+                    color: Colors.purple[200],
                     borderRadius: BorderRadius.circular(32)),
                 child: _image != null
                     ? Image.file(

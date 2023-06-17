@@ -1,10 +1,26 @@
+import 'package:connectpamodziv04/services/fetch_users.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AppSettings extends StatelessWidget {
+  static const String id = 'settings';
   @override
   Widget build(BuildContext context) {
+    AuthService _authService = AuthService();
+
+    Future<void> signOut(BuildContext context) async {
+      try {
+         _authService = FirebaseAuth.instance.signOut() as AuthService;
+        // Navigate to the login or home screen after successful sign-out
+        Navigator.pushNamed(context, '/');
+      } catch (e) {
+        print('Sign-out error: $e');
+        // Handle sign-out error (if any)
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -51,6 +67,9 @@ class AppSettings extends StatelessWidget {
           ListTile(
             leading: FaIcon(FontAwesomeIcons.signOutAlt),
             title: Text("Logout"),
+            onTap: () {
+              signOut(context);
+            },
           ),
         ],
       ),

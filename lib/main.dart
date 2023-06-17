@@ -1,3 +1,5 @@
+import 'package:connectpamodziv04/screens/Create/add.dart';
+import 'package:connectpamodziv04/screens/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:connectpamodziv04/firebase_options.dart';
 import 'package:connectpamodziv04/nav.dart';
@@ -53,6 +55,8 @@ class MyApp extends StatelessWidget {
           Register.id: (context) => Register(),
           Welcome.id: (context) => Welcome(),
           Authenticate.id: (context) => Authenticate(),
+          AppSettings.id: (context) => AppSettings(),
+          Add.id: (context) => Add(),
         },
       ),
     );
